@@ -160,6 +160,6 @@ cp ../cache/rime-emoji/opencc/* opencc
 cp ../cache/rime-symbols/opencc/* opencc
 
 echo 开始构建部署二进制
-rime_deployer --compile clover.schema.yaml . /usr/share/rime-data || exit
+rime_deployer --compile clover.schema.yaml . "/Library/Input Methods/Squirrel.app/Contents/SharedSupport" || exit
 rm -rf build/*.txt
 
