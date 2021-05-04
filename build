@@ -39,13 +39,6 @@ find_extractor(){
 	# 寻找解压工具
 	#   会设置 $extractor 和 $extra_op 变量
 
-	# 寻找 unzip
-	if type unzip >/dev/null 2>&1; then
-		extractor=unzip
-		extra_op=-o
-		return
-	fi
-
 	# 寻找 bsdtar
 	if type bsdtar >/dev/null 2>&1; then
 		extractor=bsdtar
@@ -58,6 +51,13 @@ find_extractor(){
 		extractor=7z
 		extra_op=x
 		extra_op1=-y
+		return
+	fi
+
+	# 寻找 unzip
+	if type unzip >/dev/null 2>&1; then
+		extractor=unzip
+		extra_op=-o
 		return
 	fi
 }
