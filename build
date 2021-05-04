@@ -146,7 +146,8 @@ for i in THUOCL/data/THUOCL_*; do
 	../src/thuocl2rime $i
 done
 cp ../src/sogou_new_words.dict.yaml .
-../libscel/scel.py >> sogou_new_words.dict.yaml
+../libscel/scel.py "../../sogou-dict/网络流行新词【官方推荐】.scel" >> sogou_new_words.dict.yaml
+../libscel/scel.py "../../sogou-dict/开发大神专用词库【官方推荐】.scel" >> sogou_new_words.dict.yaml
 
 # 生成 data 目录
 mkdir -p ../data
