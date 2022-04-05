@@ -219,7 +219,8 @@ class DictGenerator:
         text_phrase = ''
         for phrase_st in phrase_list:
             # 通过 pypinyin 库获取到词组的拼音
-            phrase_pinyin = map(self.fixPinyin, pypinyin.lazy_pinyin(phrase_st[0]))
+            phrase_words = list(jieba.cut(phrase_st[0]))
+            phrase_pinyin = map(self.fixPinyin, pypinyin.lazy_pinyin(phrase_words))
             text_phrase += phrase_st[0] + '\t' + \
                 ' '.join(phrase_pinyin) + '\t' + \
                 str(phrase_st[1]) + '\n'

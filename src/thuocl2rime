@@ -3,6 +3,7 @@
 
 
 import pypinyin
+import jieba
 
 import argparse
 import os
@@ -50,7 +51,8 @@ sort: by_weight
                 continue
 
             # 获取该词组的拼音
-            pinyin = pypinyin.lazy_pinyin(v[0])
+            words = list(jieba.cut(v[0]))
+            pinyin = pypinyin.lazy_pinyin(words)
             for p in pinyin:
                 if p in initials_set:  # 拼音不能只包含声母
                     break
