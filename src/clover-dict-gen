@@ -186,12 +186,13 @@ class DictGenerator:
         return (word_count, parse_count)
 
 
-    def getWordDictText(self):
+    def getWordDictText(self, min_freq = -1):
         """
             生成单字的 rime 字典文本
         """
         # 按频率倒序排序
         word_list = [(key[0], key[1], self.word_dict[key]) for key in self.word_dict]
+        word_list = list(filter(lambda w: w[2] > min_freq, word_list))
         word_list.sort(key = lambda w: w[2], reverse = True)
 
         # 生成文本
@@ -292,7 +293,7 @@ name: %s
 version: "1.0.0"
 sort: by_weight
 ...
-""" % word_dict_name + generator.getWordDictText()
+""" % word_dict_name + generator.getWordDictText(600)
 
     parse_dict_text = """
 # Rime 字典
